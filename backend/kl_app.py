@@ -117,7 +117,7 @@ def generate_summary(text: str) -> str:
     if not GEMINI_API_KEY:
         return ""
     try:
-        r = genai.GenerativeModel("gemini-1.5-flash").generate_content(
+        r = genai.GenerativeModel("gemini-2.5-flash").generate_content(
             "Summarize the following web page content in 5-7 concise bullet points.\n\n" + text[:6000]
         )
         return (r.text or "").strip()

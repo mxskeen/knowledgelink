@@ -15,7 +15,7 @@ function ChatInputBox() {
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
-  const [links, setLinks] = useState([]); // transient display only
+  const [links, setLinks] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -45,7 +45,7 @@ function ChatInputBox() {
         const created = await r.json();
         setInputValue("");
         setSearchResults([]);
-        setLinks(created ? [created] : []); // show only the newly added link
+        setLinks(created ? [created] : []);
       } else {
         const apiUrl = `${getApiUrl(API_CONFIG.ENDPOINTS.SEARCH)}?q=${encodeURIComponent(value)}`;
         const response = await fetchWithRetry(apiUrl, { credentials: 'include' });
@@ -62,26 +62,15 @@ function ChatInputBox() {
 
   return (
     <div className="w-full max-w-3xl mx-auto flex flex-col gap-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">KnowledgeLink</h1>
-        <div>
-          {user ? (
-            <Button variant="outline" onClick={logout}>Sign out</Button>
-          ) : (
-            <Button onClick={login}>Sign in with Google</Button>
-          )}
-        </div>
-      </div>
-
-      <div className="flex gap-2">
+      <div className="flex gap-2 w-full">
         <input
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           onKeyDown={onKeyDown}
-          placeholder="Paste a URL to save, or ask a question to search"
-          className="flex-1 border rounded px-3 py-2"
+          placeholder="Search saved links or paste a URL to save"
+          className="flex-1 border rounded-xl px-4 h-12 md:h-14 text-base md:text-lg"
         />
-        <Button onClick={submit} disabled={loading || !inputValue}>
+        <Button onClick={submit} disabled={loading || !inputValue} className="h-12 md:h-14 px-5 md:px-6">
           <Search className="mr-2 h-4 w-4" /> Go
         </Button>
       </div>

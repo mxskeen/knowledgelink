@@ -18,6 +18,11 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "KnowledgeLink",
   description: "Save links, get AI summaries, and search with vectors.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {

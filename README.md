@@ -24,7 +24,12 @@ SESSION_SECRET=...
 
 ## Run
 - Build frontend: `cd frontend && npm install && npm run build`
-- Start backend from repo root: `uvicorn app:app --reload`
+- Backend:
+- `cd backend`
+- `poetry install`
+- `poetry shell`
+- activate the venv from cache.
+- Run: `FRONTEND_STATIC_DIR=../frontend/out PYTHONPATH=.. poetry run uvicorn app:app --port 8000 --reload`
 - Open http://localhost:8000
 
 ## API

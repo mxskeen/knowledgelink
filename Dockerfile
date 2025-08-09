@@ -32,4 +32,4 @@ COPY --from=frontend-builder /app/frontend/out/ /app/frontend_out/
 
 EXPOSE 8000
 ENV HOST=0.0.0.0 PORT=8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"] 
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port ${PORT:-8000}"] 

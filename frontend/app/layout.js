@@ -19,9 +19,9 @@ export const metadata = {
   title: "KnowledgeLink",
   description: "Save links, get AI summaries, and search with vectors.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/kl1.png",
+    shortcut: "/kl1.png",
+    apple: "/kl1.png",
   },
 };
 

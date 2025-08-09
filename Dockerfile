@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y build-essential curl && rm -rf /var/lib
 
 # Python deps via poetry export
 COPY backend/pyproject.toml /app/backend/pyproject.toml
-RUN pip install --no-cache-dir --upgrade pip poetry && \
+RUN pip install --no-cache-dir --upgrade pip poetry poetry-plugin-export && \
     cd /app/backend && poetry export -f requirements.txt --without-hashes -o /tmp/requirements.txt && \
     pip install --no-cache-dir -r /tmp/requirements.txt
 
